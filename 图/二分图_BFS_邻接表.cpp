@@ -1,8 +1,7 @@
 /*
-¶ş·ÖÍ¼µÄÅĞ¶Ï, bfsµÄ·½·¨, ÁÚ½Ó±í
-½«Ò»¸ö½áµãÈ¾Îª°×É«, ½«ºÍËüÏàÁÚµÄ½áµãÈ¾ÎªºÚÉ«... Èç¹ûºÍËüÏàÁÚµÄ½áµã
-ÒÑ¾­È¾É«ÇÒÑÕÉ«Ò»Ñù,Ôò¸ÃÍ¼²»ÊÇ¶ş·ÖÍ¼.
-
+äºŒåˆ†å›¾çš„åˆ¤æ–­, bfsçš„æ–¹æ³•, é‚»æ¥è¡¨
+å°†ä¸€ä¸ªç»“ç‚¹æŸ“ä¸ºç™½è‰², å°†å’Œå®ƒç›¸é‚»çš„ç»“ç‚¹æŸ“ä¸ºé»‘è‰²... å¦‚æœå’Œå®ƒç›¸é‚»çš„ç»“ç‚¹
+å·²ç»æŸ“è‰²ä¸”é¢œè‰²ä¸€æ ·,åˆ™è¯¥å›¾ä¸æ˜¯äºŒåˆ†å›¾.
 */
 
 #include <stdio.h>
@@ -14,22 +13,22 @@ using std::queue;
 const int MAXN = 10;
 const int INIT = 0;
 const int BLACK = -1;
-const int WRITE = 1;//È¾µÄÁ½ÖÖÑÕÉ«»¥ÎªÏà·´Êı
+const int WRITE = 1;//æŸ“çš„ä¸¤ç§é¢œè‰²äº’ä¸ºç›¸åæ•°
 int color[MAXN];
 vector<vector<int>>g(MAXN);
 
 
 
 /*
-¹ã¶ÈÓÅÏÈËÑË÷bfs, ½Úµã´Ó1¿ªÊ¼±àºÅ, ·¶Î§ÊÇ[1 , N]
+å¹¿åº¦ä¼˜å…ˆæœç´¢bfs, èŠ‚ç‚¹ä»1å¼€å§‹ç¼–å·, èŒƒå›´æ˜¯[1 , N]
 */
-bool is_bipartite(int N)// bipartite graph ¶ş·ÖÍ¼, Ê¹ÓÃbfs
+bool is_bipartite(int N)// bipartite graph äºŒåˆ†å›¾, ä½¿ç”¨bfs
 {
 	for (int i = 1; i <= N; ++i)
 	{
 		color[i] = INIT;
 	}
-	for (int i = 1; i <= N; ++i)//Í¼¿ÉÄÜ²»ÊÇÁ¬Í¨(Ç¿Á¬Í¨)µÄ
+	for (int i = 1; i <= N; ++i)//å›¾å¯èƒ½ä¸æ˜¯è¿é€š(å¼ºè¿é€š)çš„
 	{
 		queue<int> que;
 		if (color[i] == INIT)
@@ -40,17 +39,17 @@ bool is_bipartite(int N)// bipartite graph ¶ş·ÖÍ¼, Ê¹ÓÃbfs
 		while (!que.empty())
 		{
 			int p = que.front();
-			for (int i = 0; i != g[p].size(); ++i)//ËÑË÷µãpÁÚ½Ó±í
+			for (int i = 0; i != g[p].size(); ++i)//æœç´¢ç‚¹pé‚»æ¥è¡¨
 			{
-				int adj = g[p][i];//adj±íÊ¾ÁÚ½Ó±í³ÉÔ±, ÓëpÏàÁ¬µÄµã
+				int adj = g[p][i];//adjè¡¨ç¤ºé‚»æ¥è¡¨æˆå‘˜, ä¸pç›¸è¿çš„ç‚¹
 				if (color[adj]== INIT)
 				{
-					color[adj] = -color[p];//Èç¹ûÃ»ÓĞÈ¾É«, ½«ÑÕÉ«È¾ÎªÓëÔ­À´Ïà·´
+					color[adj] = -color[p];//å¦‚æœæ²¡æœ‰æŸ“è‰², å°†é¢œè‰²æŸ“ä¸ºä¸åŸæ¥ç›¸å
 					que.push(p);
 				}
 				else if (color[adj] == color[p])
 				{
-					return false;//Èç¹ûÒÑ¾­È¾É«,»¹ºÍÏÖÔÚµÄÑÕÉ«Ò»Ñù,·µ»Ø²»ÊÇ¶ş·ÖÍ¼
+					return false;//å¦‚æœå·²ç»æŸ“è‰²,è¿˜å’Œç°åœ¨çš„é¢œè‰²ä¸€æ ·,è¿”å›ä¸æ˜¯äºŒåˆ†å›¾
 				}
 			}
 			que.pop();
