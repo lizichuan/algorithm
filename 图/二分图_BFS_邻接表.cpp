@@ -19,7 +19,6 @@ int color[MAXN];
 vector<vector<int>>g(MAXN);
 
 
-
 /*
 广度优先搜索bfs, 节点从1开始编号, 范围是[1 , N]
 */
