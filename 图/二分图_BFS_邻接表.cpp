@@ -18,7 +18,6 @@ const int WRITE = 1;//染的两种颜色互为相反数
 int color[MAXN];
 vector<vector<int>>g(MAXN);
 
-
 /*
 广度优先搜索bfs, 节点从1开始编号, 范围是[1 , N]
 */
