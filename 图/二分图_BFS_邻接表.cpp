@@ -5,7 +5,7 @@
 >>>>>>> origin/master
 */
 
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
 #include <queue>
 using std::vector;
